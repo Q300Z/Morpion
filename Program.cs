@@ -24,7 +24,7 @@
             Console.WriteLine("╚═════════╩═════════╩═════════╝");
 
             int x = 0;
-            int y = 0;
+            int y = 1;
 
             //ColorGrid([1,11,21],[3,7,11])
             ColorGrid(1+(10*x), 3+(y*4));//Le premier chiffre définit la position par défaut, le chiffre multiplié définit l'empattement de chaque cellule, la variable définit la cellule qu'on veut colorer
@@ -36,11 +36,14 @@
             Console.BackgroundColor = ConsoleColor.Green;
             for (int h = 0; h < 3; h++)
             {
-                for (int l = 0; l < 9; l++)
+                Console.SetCursorPosition(x, y + h);
+                Console.Write("         ");
+
+                /*for (int l = 0; l < 9; l++)
                 {
                     Console.SetCursorPosition(x + l, y + h);
                     Console.Write(" ");
-                }
+                }*/
             }
             Console.BackgroundColor = ConsoleColor.Black;
         }
