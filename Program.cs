@@ -4,57 +4,61 @@
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Morpion");
-            Console.WriteLine("║ ╗ ╝ ╚ ╔ ═ ╩ ╦ ╬ ╠ ╣");
-            
-            Console.WriteLine("╔═════════╦═════════╦═════════╗");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("╠═════════╬═════════╬═════════╣");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("╠═════════╬═════════╬═════════╣");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("║         ║         ║         ║");
-            Console.WriteLine("╚═════════╩═════════╩═════════╝");
+            Game game = new Game();
+            game.Affichage();
 
-            int x = 2;
-            int y = 1;
-
-
-
-            //ColorGrid([1,11,21],[3,7,11])
-            ColorGrid(x,y);
-
-            Console.SetCursorPosition(1, 25);
-        }
-        static void ColorGrid(int x, int y) //Fait carré vert de 3 de haut pour 9 de large
-        {
-            /*Le premier chiffre définit la position par défaut, 
-             * le chiffre multiplié définit l'empattement de chaque cellule, 
-             * la variable définit la cellule qu'on veut colorer
-             */
-            x = 1 + (10 * x);
-            y = 3 + (4 * y);
-
-            Console.BackgroundColor = ConsoleColor.Green;//Affiche la couleur vert
-            for (int h = 0; h < 3; h++)
+            while (true)
             {
-                Console.SetCursorPosition(x, y + h);
-                Console.Write(new String(' ', 9));//Répéte un caractére x fois
 
-                /*for (int l = 0; l < 9; l++)
+                var key = Console.ReadKey(true);
+
+                /*//If
+                if (key.Key == ConsoleKey.DownArrow)
                 {
-                    Console.SetCursorPosition(x + l, y + h);
-                    Console.Write(" ");
-                }*/
+                    game.DeplacerBas();
+                }
+                else if (key.Key == ConsoleKey.UpArrow)
+                {
+                    game.DeplacerHaut();
+                }
+                else if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    game.DeplacerGauche();
+                }
+                else if (key.Key == ConsoleKey.RightArrow)
+                {
+                    game.DeplacerDroite();
+                }
+                else if (key.Key == ConsoleKey.Spacebar)
+                {
+                    game.PlacerCroix();
+                }
+                */
+
+                //Switch
+                switch (key.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        game.DeplacerHaut();
+                        break;
+                    case ConsoleKey.DownArrow:
+                        game.DeplacerBas();
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        game.DeplacerGauche();
+                        break;
+                    case ConsoleKey.RightArrow:
+                        game.DeplacerDroite();
+                        break;
+                    case ConsoleKey.Spacebar:
+                        game.PlacerMarqueur();
+                        break;
+                    default: break;
+                }
+                game.Affichage();
+
+                Console.WriteLine(game.Victoire());
             }
-            Console.BackgroundColor = ConsoleColor.Black;
         }
     }
-}                           
+}
