@@ -112,12 +112,12 @@ namespace TBO_Morpion
             {
                 for (int w = 0; w < 3; w++)
                 {
-                    if ($"{Data[h, 0]}{Data[h, 1]}{Data[h, 2]}" == "XXX" || $"{Data[0, w]}{Data[1, w]}{Data[2, w]}" == "XXX" || $"{Data[0, 0]}{Data[1, 1]}{Data[2, 2]}" == "XXX")
+                    if ($"{Data[h, 0]}{Data[h, 1]}{Data[h, 2]}" == "XXX" || $"{Data[0, w]}{Data[1, w]}{Data[2, w]}" == "XXX" || $"{Data[0, 0]}{Data[1, 1]}{Data[2, 2]}" == "XXX" || $"{Data[2, 0]}{Data[1, 1]}{Data[0, 2]}" == "XXX")
                     {
                         Console.WriteLine("Gagnant X");
                         return true;
                     }
-                    else if ($"{Data[h, 0]}{Data[h, 1]}{Data[h, 2]}" == "OOO" || $"{Data[0, w]}{Data[1, w]}{Data[2, w]}" == "OOO" || $"{Data[0, 0]}{Data[1, 1]}{Data[2, 2]}" == "OOO")
+                    else if ($"{Data[h, 0]}{Data[h, 1]}{Data[h, 2]}" == "OOO" || $"{Data[0, w]}{Data[1, w]}{Data[2, w]}" == "OOO" || $"{Data[0, 0]}{Data[1, 1]}{Data[2, 2]}" == "OOO" || $"{Data[2, 0]}{Data[1, 1]}{Data[0, 2]}" == "OOO")
                     {
                         Console.WriteLine("Gagnant O");
                         return true;
